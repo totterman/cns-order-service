@@ -8,6 +8,5 @@ import java.net.URI;
 @ConfigurationProperties(prefix = "polar")
 public record ClientProperties(
         @NotNull
-        URI catalogServiceUri,
-        Long timeout
+        URI catalogServiceUri
 ) {}
