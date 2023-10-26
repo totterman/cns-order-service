@@ -12,7 +12,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import java.time.Instant;
 
 @JsonTest
-public class OrderJsonTests {
+class OrderJsonTests {
 
     @Autowired
     private JacksonTester<Order> orderJacksonTester;
@@ -21,7 +21,7 @@ public class OrderJsonTests {
     void testSerialize() throws Exception {
         var order = new Order(394L, "1234567890", "Book Name",
                 9.90, 1, OrderStatus.ACCEPTED,
-                Instant.now(), Instant.now(), 21);
+                Instant.now(), Instant.now(), "John Doe", "John Doe", 21);
         var jsonContent = this.orderJacksonTester.write(order);
 
         assertThat(jsonContent).extractingJsonPathNumberValue("@.id")
@@ -57,6 +57,8 @@ public class OrderJsonTests {
                 "status": "%s",
                 "createdDate": "2023-10-10T12:52:12.123456Z",
                 "lastModifiedDate": "2023-10-10T12:52:12.123456Z",
+                "createdBy": "Jane Doe",
+                "lastModifiedBy": "Jane Doe",
                 "version": 21
                 }
                 """.formatted(OrderStatus.ACCEPTED);
@@ -64,7 +66,7 @@ public class OrderJsonTests {
                 .usingRecursiveComparison()
                 .isEqualTo(new Order(394L, "1234567890", "Book Name",
                         9.90, 1, OrderStatus.ACCEPTED,
-                        instant, instant, 21));
+                        instant, instant, "Jane Doe", "Jane Doe", 21));
     }
 
 }

@@ -12,7 +12,7 @@ import org.springframework.boot.test.json.JacksonTester;
 import java.time.Instant;
 
 @JsonTest
-public class OrderRequestJsonTests {
+class OrderRequestJsonTests {
 
     @Autowired
     private JacksonTester<OrderRequest> orderRequestJacksonTester;
