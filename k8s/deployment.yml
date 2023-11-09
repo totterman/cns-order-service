@@ -42,7 +42,7 @@ spec:
             periodSeconds: 15
           volumeMounts:
             - name: order-config-volume
-              mountpath: /workspace/config
+              mountPath: /workspace/config
       volumes:
         - name: order-config-volume
           configMap:
